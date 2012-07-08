@@ -20,5 +20,12 @@ head
         #content-left
           block content
         #content-right
+          p
+            | Archived Posts
+            ul
+              - each archive in archives
+                li 
+                  | #{archive.monthName} #{archive.year} 
+                  a(href='/archives/?year=#{archive.year}&month=#{archive.month}') #{archive.count}
         .clear
       #footer

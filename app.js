@@ -3,10 +3,37 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes');
+var express = require('express'),
+    routes = require('./routes'),
+    mongoose = require('mongoose');
 
 var app = module.exports = express.createServer();
+
+mongoose.connect('mongodb://localhost/blueberry');
+
+var fullMonth = ['january', 'febuary', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+
+var mapToArchive = function(obj){
+  var archive = {
+    year : obj._id.year,
+    monthName: fullMonth[obj._id.month],
+    month : obj._id.month,
+    count: obj.value.count
+  }
+
+  return archive;
+};
+
+var getArchives = function(req, res, next) {
+  mongoose.connection.db.collection('postsPerMonth', function(error, collection) {
+    collection.find().toArray(function(error, postsPerMonth){
+      var archives = postsPerMonth.map(mapToArchive);
+      
+      req.archives = archives;
+      next();
+    });
+  });
+};
 
 // Configuration
 
@@ -31,8 +58,9 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/', routes.index);
-app.get('/post/:id', routes.post);
+app.get('/', getArchives, routes.index);
+app.get('/post/:id', getArchives, routes.post);
+app.get('/archives', getArchives, routes.postsByMonthYear);
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

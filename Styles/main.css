@@ -96,7 +96,7 @@
 	line-height: 26px;
 }
 
-.post-comment { margin: 25px 0px 25px 0px; }
+.post-comment { margin: 25px 0px 35px 0px; }
 .post-like { margin: 10px 0px 0px 2px; }
 
 body
@@ -156,6 +156,22 @@ body
 	line-height: 18px;
 }
 
+#pagination
+{
+	margin: 10px 0px 25px 0px;
+	float: right;
+}
+
+#pagination a
+{
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	letter-spacing: 3px;
+	line-height: 26px;
+	margin: 0px 15px 0px 15px;
+
+}
+
 #footer
 {
 	background-image: url('../Images/City.jpeg');
@@ -183,12 +199,15 @@ body
 #content-right p
 {
 	margin-top: 25px;
-	margin-left: 40px;
+	margin-left: 20px;
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
 }
 
 #content-right li
 {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
-	margin: 5px 0px 5px 40px;
+	font-size: 12px;
+	margin: 5px 0px 5px -20px;
+	list-style: none;
+	text-transform: capitalize;
 }

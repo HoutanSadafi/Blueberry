@@ -20,3 +20,9 @@ block content
         .post-comment
           fb:comments(href='http://127.0.0.1/post/#{post.id}', num_posts='2', width='660px', simple='1')
       .clear
+
+  #pagination
+    - if (pagination.previousPage)
+      a(href='/?page=#{pagination.previousPageNumber}') Previous Page
+    - if (pagination.nextPage) 
+      a(href='/?page=#{pagination.nextPageNumber}') Next Page
