@@ -1,0 +1,194 @@
+
+.clear
+{
+	clear: both;
+	float: none;
+	height: 0px;
+}
+
+.shadow {
+	-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
+
+.post
+{
+	margin: 20px 0px 20px 20px;
+	padding: 0px;
+	padding-right: 20px;
+	background-color: white;
+	border: solid 1px black;
+}
+
+.post-date
+{
+	width: 45px;
+	padding: 15px;
+	float: left;
+}
+
+.post-content
+{
+	width: 660px;
+	float: right;
+	padding: 0px 0px 15px 0px;
+}
+
+.post-date-box
+{
+	width: 51px;
+	padding: 5px 0px 5px 0px;
+	background-color: #E8E8E8;
+	color: #929292;
+	font-size: 11px;
+	text-align: center;
+	text-transform: uppercase;
+	border: 1px solid #CDCDCD;
+}
+
+.post-date-box div
+{
+	padding: 0px;
+	margin: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.post-date-box .month { font-size: 16px; }
+.post-date-box .day { font-size: 32px; }
+.post-date-box .year { font-size: 16px; }
+
+.avatar
+{
+	width: 45px;
+	height: 45px;
+	margin: 0px auto 0px auto;
+}
+.post-header 
+{
+	 font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+	 padding-left: 30px; 
+}
+
+.post-title
+{
+	margin-top: 15px;
+	font-size: 36px;
+	line-height: 26px;
+}
+
+.post-author
+{
+	margin: 10px 0px 10px 0px;
+	font-size: 14px;
+	line-height: 17px;
+}
+
+.post-body
+{
+	text-indent: 30px;
+	letter-spacing: 1px;
+	margin-top: 20px;
+	line-height: 26px;
+}
+
+.post-comment { margin: 25px 0px 25px 0px; }
+.post-like { margin: 10px 0px 0px 2px; }
+
+body
+{
+	background-image: url('../Images/Background.png');
+	background-repeat:repeat;
+}
+
+
+#container
+{
+	width: 980px;
+	margin: 20px auto 20px;
+	padding: 0px;
+	position: relative;
+	background-color: #FAF9DB;
+	border: solid 1px black;
+}
+
+#header
+{
+	background-image: url('../Images/ClothesLine.jpeg');
+	width: 980px;
+	height: 300px;
+	margin: 0px auto 0px;	
+}
+
+#horizontal-break
+{
+	background-image: url('../Images/GreenRibbon.png');
+	width: 980px;
+	height: 37px;
+	color: #9EBF34;
+	margin: 0px auto 10px;
+	padding: 0px;
+}
+
+#menu
+{
+	padding: 5px;
+}
+
+#menu span
+{	
+	margin-left: 20px;
+	color: black;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	letter-spacing: 3px;
+	line-height: 26px;
+}
+
+#content
+{
+	width: 980px;
+	margin: 0px auto 0px;
+	line-height: 18px;
+}
+
+#footer
+{
+	background-image: url('../Images/City.jpeg');
+	width: 980px;
+	height: 180px;
+	color: #FAF9DB;
+	margin: 0px auto 0px;
+	padding: 0px;
+}
+
+#content-left
+{
+	float: left;
+	width: 780px;
+	height: 100%;
+}
+
+#content-right
+{
+	float: right;
+	width: 200px;
+	height: 100%;
+}
+
+#content-right p
+{
+	margin-top: 25px;
+	margin-left: 40px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+#content-right li
+{
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+	margin: 5px 0px 5px 40px;
+}
