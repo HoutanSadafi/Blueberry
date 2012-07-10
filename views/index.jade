@@ -1,5 +1,16 @@
 extends layout
 
+block facebookapi
+  #fb-root
+    script
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
 block content
   - each post in posts
     .post.shadow
@@ -20,9 +31,17 @@ block content
         .post-comment
           fb:comments(href='http://127.0.0.1/post/#{post.id}', num_posts='2', width='660px', simple='1')
       .clear
-
   #pagination
     - if (pagination.previousPage)
       a(href='/?page=#{pagination.previousPageNumber}') Previous Page
     - if (pagination.nextPage) 
       a(href='/?page=#{pagination.nextPageNumber}') Next Page
+
+block archivedPosts
+  p
+    | Archived Posts
+    ul
+      - each archive in archives
+        li 
+          | #{archive.monthName} #{archive.year} 
+          a(href='/archive/?year=#{archive.year}&month=#{archive.month}') #{archive.count}

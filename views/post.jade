@@ -1,21 +1,41 @@
 extends layout
 
+block facebookapi
+  #fb-root
+    script
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
 block content
-    .post.shadow
-      .post-date
-        .post-date-box
-          .month #{post.month}
-          .day #{post.day}
-          .year #{post.year}
-          img.avatar(src='../Images/Avatars/avatar.jpeg', alt='#{post.author.fullname}')
-        .post-like
-          fb:like(href='http://127.0.0.1/post/#{post.id}', send='false', layout='box_count', width='50px', show_faces='true', font='verdana')
-      .post-content
-        .post-header
-          .post-title #{post.title}
-          .post-author by #{post.author.fullname}
-        .post-body
-          | #{post.content}
-        .post-comment
-          fb:comments(href='http://127.0.0.1/post/#{post.id}', num_posts='2', width='660px', simple='1')
-      .clear
+  .post.shadow
+    .post-date
+      .post-date-box
+        .month #{post.month}
+        .day #{post.day}
+        .year #{post.year}
+        img.avatar(src='../Images/Avatars/avatar.jpeg', alt='#{post.author.fullname}')
+      .post-like
+        fb:like(href='http://127.0.0.1/post/#{post.id}', send='false', layout='box_count', width='50px', show_faces='true', font='verdana')
+    .post-content
+      .post-header
+        .post-title #{post.title}
+        .post-author by #{post.author.fullname}
+      .post-body
+        | #{post.content}
+      .post-comment
+        fb:comments(href='http://127.0.0.1/post/#{post.id}', num_posts='2', width='660px', simple='1')
+    .clear
+      
+block archivedPosts
+  p
+    | Archived Posts
+    ul
+      - each archive in archives
+        li 
+          | #{archive.monthName} #{archive.year} 
+          a(href='/archive/?year=#{archive.year}&month=#{archive.month}') #{archive.count}

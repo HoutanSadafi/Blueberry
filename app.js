@@ -2,21 +2,18 @@
 /**
  * Module dependencies.
  */
-
 var express = require('express'),
-    routes = require('./routes'),
-    mongoose = require('mongoose');
+    mongoose = require('./mongo').mongoose,
+    util = require('./utilities'),
+    app = express.createServer(),
+    routes = require('./routes/')(app);
 
-var app = module.exports = express.createServer();
 
-mongoose.connect('mongodb://localhost/blueberry');
-
-var fullMonth = ['january', 'febuary', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 
 var mapToArchive = function(obj){
   var archive = {
     year : obj._id.year,
-    monthName: fullMonth[obj._id.month],
+    monthName: util.months.long[obj._id.month],
     month : obj._id.month,
     count: obj.value.count
   }
@@ -43,9 +40,17 @@ app.configure(function(){
   app.set('view options', { layout: false, pretty: true });
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(app.router);
   app.use('/Styles', express.static(__dirname + '/Styles'));
   app.use('/Images', express.static(__dirname + '/Images'));
+  app.use(app.router);
+  app.use(function(req, res, next){
+    res.status(404);
+    res.render("404", {});
+  });
+  app.use(function(err, req, res, next){
+    res.status(500);
+    res.render("500", {});
+  });
 });
 
 app.configure('development', function(){
@@ -58,9 +63,9 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/', getArchives, routes.index);
-app.get('/post/:id', getArchives, routes.post);
-app.get('/archives', getArchives, routes.postsByMonthYear);
+app.get('/', getArchives, routes.post.list);
+app.get('/post/:id', getArchives, routes.post.view);
+app.get('/archive', getArchives, routes.archive.list);
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
