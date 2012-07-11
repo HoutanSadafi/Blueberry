@@ -103,6 +103,8 @@ app.all('/*', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, function(
   res.render("404", { title : '', url: req.url, postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});
 });
 
-app.listen(3000, function(){
+var port = process.env.PORT || 3000;
+
+app.listen(port, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
