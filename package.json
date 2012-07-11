@@ -3,10 +3,12 @@
   , "version": "0.0.1"
   , "private": true
   , "engines" : {
-  		"node" : "0.8.1"
+      "node" : "0.8.1"
+    , "npm" : "1.1.36" 
   }
   , "dependencies": {
       "express": "2.5.11"
     , "jade": ">= 0.0.1"
+    , "mongoose" : "2.7.1"
   }
 }

@@ -7,7 +7,7 @@ block content-left
         .month #{post.month}
         .day #{post.day}
         .year #{post.year}
-        img.avatar(src='../Images/Avatars/avatar.jpeg', alt='#{post.author.fullname}')
+        img.avatar(src='/public/images/avatars/avatar.jpeg', alt='#{post.author.fullname}')
       .post-like
         fb:like(href='http://127.0.0.1/post/#{post.id}', send='false', layout='box_count', width='50px', show_faces='true', font='verdana')
     .post-content
