@@ -39,13 +39,14 @@ post.list = function(req, res){
         }
 
         res.render('index', { posts : posts, 
-                                  pagination : { 
-                                            previousPageNumber: pageNumber-1, 
-                                            nextPageNumber: pageNumber+1, 
-                                            nextPage: nextPage, 
-                                            previousPage: previousPage 
-                                          },
-                                  archives: req.archives});
+                              pagination : { 
+                                        previousPageNumber: pageNumber-1, 
+                                        nextPageNumber: pageNumber+1, 
+                                        nextPage: nextPage, 
+                                        previousPage: previousPage 
+                                      },
+                              postsPerMonth: req.postsPerMonth,
+                              postsPerAuthor : req.postsPerAuthor});
       });
     } 
   });
@@ -61,7 +62,9 @@ post.view = function(req, res){
       post.day = post.date.getDay().lpad(2);
       post.month = post.date.getMonthAbr();
 
-      res.render('post', {post: post, archives: req.archives});
+      res.render('post', { post: post, 
+                           postsPerMonth: req.postsPerMonth,
+                           postsPerAuthor : req.postsPerAuthor});
     }
   });
 };

@@ -1,18 +1,16 @@
 !!! strict
 html(xmlns:fb='http://ogp.me/ns/fb#')
-head
-    link(href='../Styles/main.css', rel='stylesheet', type='text/css')
-    title
-  body
-    block facebookapi
-    
-    #container.shadow
-      #header
-      #horizontal-break
-      #content
-        #content-left
-          block content
-        #content-right
-          block archivedPosts
-        .clear
-      #footer
+	head
+		link(href='../Styles/main.css', rel='stylesheet', type='text/css')
+		block css
+		block script
+		title
+	body
+		block facebookscript
+		
+		#container.shadow
+			#header
+			#horizontal-break
+			#content
+				block content
+			#footer

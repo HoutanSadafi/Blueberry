@@ -27,7 +27,8 @@ archive.list = function(req, res){
                                               nextPage: false, 
                                               previousPage: false 
                                             },
-                                    archives: req.archives});
+                                    postsPerMonth: req.postsPerMonth,
+                                    postsPerAuthor: req.postsPerAuthor});
         }
       });
   }
