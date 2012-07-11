@@ -33,6 +33,7 @@ var aggregate = (function(m, u){
 
   var getPostsPerMonth = function(req, res, next) {
     m.connection.db.collection('postsPerMonth', function(error, collection) {
+
       collection.find().toArray(function(error, postsPerMonth){
         var archives = postsPerMonth.map(mapToArchive);
         
@@ -44,6 +45,7 @@ var aggregate = (function(m, u){
 
   var getPostsPerAuthor = function(req, res, next) {
     m.connection.db.collection('postsPerAuthor', function(error, collection) {
+
       collection.find().toArray(function(error, postsPerAuthor){
         var authors = postsPerAuthor.map(mapToAuthor);
         
@@ -93,6 +95,9 @@ app.get('/post/:id', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, ro
 app.get('/archive', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.archive.list);
 app.get('/author', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.post.list);
 app.get('/author/:query', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.author.list);
+app.get('/about', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, function(req, res, next){
+  res.render("about", { title : '', url: req.url, postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});
+});
 app.all('/*', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, function(req, res, next){
   res.status(404);
   res.render("404", { title : '', url: req.url, postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});

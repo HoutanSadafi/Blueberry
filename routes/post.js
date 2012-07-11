@@ -17,7 +17,7 @@ post.list = function(req, res){
   query.exec(function(error, posts) {
 
     if (posts.length == 0){
-      res.redirect('/');
+      res.redirect('/about');
     } else {
       posts.forEach(function(post){
         post.year = post.date.getFullYear();

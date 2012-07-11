@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
 
 mongoose.connect('mongodb://localhost/blueberry');
 
+
 var PostSchema = new Schema({
   objectid : ObjectId,
   id : Number,

@@ -1,4 +1,5 @@
 lib-cov
+Procfile
 *.seed
 *.log
 *.csv
