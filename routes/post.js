@@ -38,7 +38,8 @@ post.list = function(req, res){
           previousPage = true;
         }
 
-        res.render('index', { posts : posts, 
+        res.render('index', { title : '',
+                              posts : posts, 
                               pagination : { 
                                         previousPageNumber: pageNumber-1, 
                                         nextPageNumber: pageNumber+1, 
@@ -62,7 +63,8 @@ post.view = function(req, res){
       post.day = post.date.getDay().lpad(2);
       post.month = post.date.getMonthAbr();
 
-      res.render('post', { post: post, 
+      res.render('post', { title : '' + post.title,
+                           post: post, 
                            postsPerMonth: req.postsPerMonth,
                            postsPerAuthor : req.postsPerAuthor});
     }

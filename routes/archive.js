@@ -1,6 +1,6 @@
 
 var mongo = require('../mongo'),
-	util = require('../utilities'),
+    util = require('../utilities'),
     Posts = mongo.models.Posts,
     mongoose = mongo.mongoose;
     archive = {};
@@ -22,13 +22,14 @@ archive.list = function(req, res){
             post.day = post.date.getDay().lpad(2);
             post.month = post.date.getMonthAbr();
           });
-          res.render('index', { posts : posts, 
-                                    pagination : { 
-                                              nextPage: false, 
-                                              previousPage: false 
-                                            },
-                                    postsPerMonth: req.postsPerMonth,
-                                    postsPerAuthor: req.postsPerAuthor});
+          res.render('index', { title : '' + util.months.long[month] + ' ' + year,
+                                posts : posts, 
+                                pagination : { 
+                                          nextPage: false, 
+                                          previousPage: false 
+                                        },
+                                postsPerMonth: req.postsPerMonth,
+                                postsPerAuthor: req.postsPerAuthor});
         }
       });
   }

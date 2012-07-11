@@ -7,7 +7,7 @@ var mongo = require('../mongo'),
 
 author.list = function(req, res){
   var searchQuery = req.params.query
-  console.log(searchQuery);  
+
   Posts.find({"author.fullname" : searchQuery }).sort('date', -1).exec(function(error, posts){
 
     if (!posts || posts.length == 0){
@@ -18,13 +18,14 @@ author.list = function(req, res){
         post.day = post.date.getDay().lpad(2);
         post.month = post.date.getMonthAbr();
       });
-      res.render('index', { posts : posts, 
-                                pagination : { 
-                                          nextPage: false, 
-                                          previousPage: false 
-                                        },
-                                postsPerMonth: req.postsPerMonth,
-                                postsPerAuthor: req.postsPerAuthor});
+      res.render('index', { title : '' + searchQuery,
+                            posts : posts, 
+                            pagination : { 
+                                      nextPage: false, 
+                                      previousPage: false 
+                                    },
+                            postsPerMonth: req.postsPerMonth,
+                            postsPerAuthor: req.postsPerAuthor});
     }
   });
 };

@@ -71,10 +71,10 @@ app.configure(function(){
   app.use('/Styles', express.static(__dirname + '/Styles'));
   app.use('/Images', express.static(__dirname + '/Images'));
   app.use(app.router);
-  /*app.use(function(err, req, res, next){
+  app.use(function(err, req, res, next){
     res.status(500);
     res.render("500", {title : ''});
-  });*/
+  });
 });
 
 app.configure('development', function(){
@@ -91,10 +91,11 @@ app.get('/', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.pos
 app.get('/post', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.post.list);
 app.get('/post/:id', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.post.view);
 app.get('/archive', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.archive.list);
+app.get('/author', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.post.list);
 app.get('/author/:query', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.author.list);
 app.all('/*', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, function(req, res, next){
   res.status(404);
-  res.render("404", { title : '', postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});
+  res.render("404", { title : '', url: req.url, postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});
 });
 
 app.listen(3000, function(){
