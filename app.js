@@ -95,7 +95,7 @@ app.get('/archive', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, rou
 app.get('/author', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.post.list);
 app.get('/author/:query', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.author.list);
 app.get('/about', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, function(req, res, next){
-  res.render("about", { title : '', url: req.url, postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});
+  res.render("about", { title : 'About Me', postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});
 });
 app.all('/*', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, function(req, res, next){
   res.status(404);

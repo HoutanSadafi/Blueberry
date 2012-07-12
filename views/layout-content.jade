@@ -15,15 +15,17 @@ block content
 	#content-left
 		block content-left
 	#content-right
-		P
-			| Authors
+		p 
+			a(href='/') Home
+		p
+			a(href='/about') About Me
+		P Authors
 			ul
 				- each author in postsPerAuthor
 					li 
 						| #{author.fullname} 
 						a(href='/author/#{author.fullname}') #{author.count}
-		P
-			| Archived Posts
+		P Archived Posts
 			ul
 				- each archive in postsPerMonth
 					li 

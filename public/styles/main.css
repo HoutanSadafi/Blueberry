@@ -89,6 +89,7 @@
 
 .post-body
 {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
 	text-indent: 30px;
 	letter-spacing: 1px;
 	margin-top: 20px;
@@ -97,6 +98,171 @@
 
 .post-comment { margin: 25px 0px 35px 0px; }
 .post-like { margin: 10px 0px 0px 2px; }
+
+.aboutme p, .post-body p
+{
+	padding-bottom: 25px;
+}
+
+.aboutme, .notfound, .error
+{
+	margin: 20px 0px 20px 20px;
+	padding: 0px;
+	padding-right: 20px;
+	padding-left: 30px;
+	background-color: white;
+	border: solid 1px black;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.aboutme-title
+{
+	margin-top: 15px;
+	font-size: 36px;
+	line-height: 26px;
+}
+
+.aboutme-body
+{
+	padding-bottom: 35px;
+	text-indent: 30px;
+	letter-spacing: 1px;
+	margin-top: 20px;
+	line-height: 26px;
+}
+
+.picture-small
+{
+	width: 125px;
+	height: auto;
+}
+
+.picture-medium
+{
+	width: 250px;
+	height: auto;
+}
+
+.picture-large
+{
+	width: 500px;
+	height: auto;
+}
+
+.picture-right
+{
+	float: right;
+	margin: 2px 2px 2px 10px;
+}
+
+.picture-left
+{
+	float: left;
+	margin: 2px 10px 2px 2px;
+}
+
+.picture-middle
+{
+	clear: both;
+	float: none;
+	margin-left: 45px;
+}
+
+.text-center
+{
+	text-align: center;
+}
+
+.polaroid
+{
+	padding: 10px 10px 45px 10px;
+	background: #eee;
+	border: 1px solid #fff;
+	-moz-box-shadow: 0px 2px 15px #333;
+	-webkit-box-shadow: , 0px 2px 15px #333;
+	box-shadow: 0px 2px 15px #333;
+	position: relative;
+}
+
+.notfound-body, .error-body
+{
+	margin: 0px;
+	margin-top: 80px;
+	margin-bottom: 120px;
+	padding: 0px;
+	line-height: normal;
+}
+
+.notfound-left
+{
+	float: left;
+	width: 400px;
+	font-size: 150px;
+	letter-spacing: -20px;
+	text-align : right;
+}
+
+.notfound-right
+{
+	float: right;
+	width: 275px;
+	font-size: 24px;
+	letter-spacing: 15px;
+	line-height: 36px;
+	padding-top: 45px;
+	padding-left: 15px;
+}
+
+.notfound-message
+{
+	padding-left: 70px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+	letter-spacing: 1px;
+	line-height: 26px;
+}
+
+.error-message
+{
+	padding-left: 120px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+	letter-spacing: 1px;
+	line-height: 26px;
+}
+
+.error-left
+{
+	float: left;
+	width:  500px;
+	text-align: right;
+	font-size: 150px;
+	letter-spacing: -20px;
+
+}
+
+.error-right
+{
+	float: right;
+	width: 365px;
+	font-size: 24px;
+	letter-spacing: 15px;
+	line-height: 36px;
+	padding-top: 45px;
+	padding-left: 10px;
+}
+
+.error
+{
+	margin-right: 20px;
+}
+
+
+h1, h2, h3, h4, h5, h6 
+{
+	margin: 0;
+ 	padding: 0;
+ 	font-weight: normal;
+ 	font-family: Arial, Helvetica, sans-serif;
+ }
 
 body
 {

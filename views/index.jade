@@ -2,24 +2,7 @@ extends layout-content
 
 block content-left
 	- each post in posts
-		.post.shadow
-			.post-date
-				.post-date-box
-					.month #{post.month}
-					.day #{post.day}
-					.year #{post.year}
-					img.avatar(src='../Images/Avatars/avatar.jpeg', alt='#{post.author.fullname}')
-				.post-like
-					fb:like(href='http://127.0.0.1/post/#{post.id}', send='false', layout='box_count', width='50px', show_faces='true', font='verdana')
-			.post-content
-				.post-header
-					.post-title #{post.title}
-					.post-author by #{post.author.fullname}
-				.post-body
-					| #{post.content}
-				.post-comment
-					fb:comments(href='http://127.0.0.1/post/#{post.id}', num_posts='2', width='660px', simple='1')
-			.clear
+		include post-item
 	#pagination
 		- if (pagination.previousPage)
 			a(href='/?page=#{pagination.previousPageNumber}') Previous Page
