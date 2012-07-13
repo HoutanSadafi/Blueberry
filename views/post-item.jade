@@ -12,8 +12,7 @@
       .post-header
         .post-title #{post.title}
         .post-author by #{post.author.fullname}
-      .post-body
-        | #{post.content}
+      .post-body !{post.content}
         .clear
       .post-comment
         fb:comments(href='http://127.0.0.1/post/#{post.id}', num_posts='2', width='660px', simple='1')
