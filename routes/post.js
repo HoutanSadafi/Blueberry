@@ -8,7 +8,7 @@ var mongo = require('../mongo'),
 
 
 post.list = function(req, res){
-  var pageSize = util.tryParseInt(req.query["size"], 2);
+  var pageSize = util.tryParseInt(req.query["size"], 4);
   var pageNumber = util.tryParseInt(req.query["page"], 1);
 
   var numberToSkip = pageSize*(pageNumber-1);

@@ -1,6 +1,11 @@
 extends layout
-		
 
+block css
+	style
+		.error-details
+		{
+			visibility : hidden;
+		}		
 block content
 	.error.shadow
 		.error-body
@@ -12,3 +17,4 @@ block content
 			.clear
 
 			.error-message
+			.error-details #{errordetails}

@@ -1,11 +1,29 @@
 
 (function(ex){
 
-var mongoose = require('mongoose'),
+var config = require('./config'),
+    mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
-mongoose.connect('mongodb://localhost/blueberry');
+var createMongoConnectionString = function(url, username, password) {
+  var protocol = 'mongodb://';
+
+  if ((username && username.length > 0 ) && (password && password.length > 0 )){
+    return protocol + username + ':' + password + '@' + url;
+  } else {
+    return protocol + url;
+  }
+}
+
+var cs = createMongoConnectionString(config.mongo.url, 
+                                             config.mongo.username, 
+                                             config.mongo.password)
+
+console.log('connecting to: ' + config.mongo.url);
+console.log(cs);
+
+mongoose.connect(cs);
 
 
 var PostSchema = new Schema({

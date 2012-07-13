@@ -73,8 +73,9 @@ app.configure(function(){
   app.use('/public', express.static(__dirname + '/public'));
   app.use(app.router);
   app.use(function(err, req, res, next){
+    console.log(err);
     res.status(500);
-    res.render("500", {title : ''});
+    res.render("500", {title : '500 - Application Error', 'errordetails': err});
   });
 });
 
@@ -99,7 +100,7 @@ app.get('/about', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, funct
 });
 app.all('/*', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, function(req, res, next){
   res.status(404);
-  res.render("404", { title : '', url: req.url, postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});
+  res.render("404", { title : '404 - Page not found', url: req.url, postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});
 });
 
 var port = process.env.PORT || 3000;
