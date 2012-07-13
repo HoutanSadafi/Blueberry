@@ -21,7 +21,6 @@ var cs = createMongoConnectionString(config.mongo.url,
                                              config.mongo.password)
 
 console.log('connecting to: ' + config.mongo.url);
-console.log(cs);
 
 mongoose.connect(cs);
 
