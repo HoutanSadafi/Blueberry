@@ -26,6 +26,14 @@
 	  return isNaN(value) ? defaultValue : parseInt(value);
 	};
 
+	var createPageTitle = function() {
+		var args = Array.prototype.slice.call(arguments, 0);
+		var domain = args.shift();
+		var title = domain.concat(' - ', args.join(' '));
+		return title;
+	};
+
 	ex.tryParseInt = tryParseInt;
 	ex.months = months;
+	ex.createPageTitle = createPageTitle;
 })(exports);

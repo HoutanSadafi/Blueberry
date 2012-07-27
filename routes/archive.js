@@ -1,6 +1,7 @@
 
 var mongo = require('../mongo'),
     util = require('../utilities'),
+    config = require('../config'),
     Posts = mongo.models.Posts,
     mongoose = mongo.mongoose;
     archive = {};
@@ -22,7 +23,7 @@ archive.list = function(req, res){
             post.day = post.date.getDate().lpad(2);
             post.month = post.date.getMonthAbr();
           });
-          res.render('index', { title : '' + util.months.long[month] + ' ' + year,
+          res.render('index', { title : util.createPageTitle(config.page.defaultTitle, util.months.long[month], year),
                                 posts : posts, 
                                 pagination : { 
                                           nextPage: false, 

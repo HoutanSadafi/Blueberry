@@ -1,6 +1,7 @@
 
 var mongo = require('../mongo'),
     util = require('../utilities'),
+    config = require('../config'),
     Posts = mongo.models.Posts,
     mongoose = mongo.mongoose;
     author = {};
@@ -18,7 +19,7 @@ author.list = function(req, res){
         post.day = post.date.getDate().lpad(2);
         post.month = post.date.getMonthAbr();
       });
-      res.render('index', { title : '' + searchQuery,
+      res.render('index', { title : util.createPageTitle(config.page.defaultTitle, searchQuery),
                             posts : posts, 
                             pagination : { 
                                       nextPage: false, 

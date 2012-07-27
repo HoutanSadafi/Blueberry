@@ -1,6 +1,7 @@
 
 var mongo = require('../mongo'),
     util = require('../utilities'),
+    config = require('../config'),
     Posts = mongo.models.Posts,
     mongoose = mongo.mongoose,
     post = {};
@@ -38,7 +39,7 @@ post.list = function(req, res){
           previousPage = true;
         }
 
-        res.render('index', { title : '',
+        res.render('index', { title : config.page.defaultTitle,
                               posts : posts, 
                               pagination : { 
                                         previousPageNumber: pageNumber-1, 
@@ -63,7 +64,7 @@ post.view = function(req, res){
       post.day = post.date.getDay().lpad(2);
       post.month = post.date.getMonthAbr();
 
-      res.render('post', { title : '' + post.title,
+      res.render('post', { title : util.createPageTitle(config.page.defaultTitle, post.title),
                            post: post, 
                            postsPerMonth: req.postsPerMonth,
                            postsPerAuthor : req.postsPerAuthor});

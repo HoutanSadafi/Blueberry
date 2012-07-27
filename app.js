@@ -5,6 +5,7 @@
 var express = require('express'),
     mongoose = require('./mongo').mongoose,
     util = require('./utilities'),
+    config = require('./config'),
     app = express.createServer(),
     routes = require('./routes/')(app);
 
@@ -75,7 +76,7 @@ app.configure(function(){
   app.use(function(err, req, res, next){
     console.log(err);
     res.status(500);
-    res.render("500", {title : '500 - Application Error', 'errordetails': err});
+    res.render("500", {title : util.createPageTitle('500', 'Application Error'), 'errordetails': err});
   });
 });
 
@@ -96,11 +97,11 @@ app.get('/archive', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, rou
 app.get('/author', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.post.list);
 app.get('/author/:query', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, routes.author.list);
 app.get('/about', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, function(req, res, next){
-  res.render("about", { title : 'About Me', postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});
+  res.render("about", { title : util.createPageTitle(config.page.defaultTitle, 'About Me'), postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});
 });
 app.all('/*', aggregate.getPostsPerMonth, aggregate.getPostsPerAuthor, function(req, res, next){
   res.status(404);
-  res.render("404", { title : '404 - Page not found', url: req.url, postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});
+  res.render("404", { title : util.createPageTitle('404', 'Page not found'), url: req.url, postsPerMonth: req.postsPerMonth, postsPerAuthor: req.postsPerAuthor});
 });
 
 var port = process.env.PORT || 3000;
