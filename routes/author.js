@@ -15,7 +15,7 @@ author.list = function(req, res){
       res.redirect('/');
     } else {
       posts.forEach(function(post){
-        post.year = post.date.getFullYear();
+        post.year = post.date.getUTCFullYear();
         post.day = post.date.getUTCDate().lpad(2);
         post.month = post.date.getMonthAbr();
       });
