@@ -21,8 +21,8 @@ post.list = function(req, res){
       res.redirect('/about');
     } else {
       posts.forEach(function(post){
-        post.year = post.date.getFullYear();
-        post.day = post.date.getDate().lpad(2);
+        post.year = post.date.getUTCFullYear();
+        post.day = post.date.getUTCDate().lpad(2);
         post.month = post.date.getMonthAbr();
       });
 
@@ -60,10 +60,10 @@ post.view = function(req, res){
     if (!post){
       res.redirect('/');
     } else {
-      post.year = post.date.getFullYear();
-      post.day = post.date.getDay().lpad(2);
+      post.year = post.date.getUTCFullYear();
+      post.day = post.date.getUTCDate().lpad(2);
       post.month = post.date.getMonthAbr();
-
+      console.log(post.date);
       res.render('post', { title : util.createPageTitle(config.page.defaultTitle, post.title),
                            post: post, 
                            postsPerMonth: req.postsPerMonth,

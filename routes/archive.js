@@ -19,8 +19,8 @@ archive.list = function(req, res){
           res.redirect('/');
         } else {
           posts.forEach(function(post){
-            post.year = post.date.getFullYear();
-            post.day = post.date.getDate().lpad(2);
+            post.year = post.date.getUTCFullYear();
+            post.day = post.date.getUTCDate().lpad(2);
             post.month = post.date.getMonthAbr();
           });
           res.render('index', { title : util.createPageTitle(config.page.defaultTitle, util.months.long[month], year),
