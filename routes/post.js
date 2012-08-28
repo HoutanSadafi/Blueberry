@@ -13,7 +13,7 @@ post.list = function(req, res){
   var pageNumber = util.tryParseInt(req.query["page"], 1);
 
   var numberToSkip = pageSize*(pageNumber-1);
-  var query = Posts.find({}).sort('date', -1).skip(numberToSkip).limit(pageSize);
+  var query = Posts.find({}).sort('date', -1).sort('id', -1).skip(numberToSkip).limit(pageSize);
 
   query.exec(function(error, posts) {
 
@@ -63,7 +63,7 @@ post.view = function(req, res){
       post.year = post.date.getUTCFullYear();
       post.day = post.date.getUTCDate().lpad(2);
       post.month = post.date.getMonthAbr();
-      console.log(post.date);
+      
       res.render('post', { title : util.createPageTitle(config.page.defaultTitle, post.title),
                            post: post, 
                            postsPerMonth: req.postsPerMonth,
