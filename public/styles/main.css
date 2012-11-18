@@ -161,11 +161,16 @@ p.aboutme, p.post-body
 	margin: 2px 10px 2px 2px;
 }
 
-.picture-middle
+.picture-middle, .picture-middle-tall
 {
 	clear: both;
 	float: none;
 	margin-left: 45px;
+}
+
+.picture-middle-tall
+{
+	margin-left: 80px
 }
 
 .text-center
