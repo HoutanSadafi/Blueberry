@@ -299,6 +299,11 @@ body
     max-width:940px;
 }
 
+img.lb:hover
+{
+	cursor : pointer;
+}
+
 #container
 {
 	width: 980px;
